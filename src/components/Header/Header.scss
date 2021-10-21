@@ -20,3 +20,37 @@
     width: 38px;
     height: 38px;
 }
+
+.search-bar {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    form {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+        button {
+            padding: 0px 8px;
+            font-size: 15px;
+            line-height: 38px;
+            cursor: pointer;
+            border: none;
+            color: #fcee23ed;
+            background: #4c4c4c;
+            height: 38px;
+        }
+        @media screen and (max-width:600px){
+            display: none;
+        }
+    }
+
+    input {
+        font-size: 18px;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+        height: 38px;
+        outline: none;
+        border: none;
+        background: #303036;
+    }
+}

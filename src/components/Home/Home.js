@@ -4,15 +4,16 @@ import { useDispatch } from 'react-redux';
 import { fetchAsyncMovies, fetchAsyncShows } from '../../features/movies/movieSlice';  // action
 
 const Home = () => {
+    const movieText = "Harry";
+    const showText = "Friends"
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchAsyncMovies())
-        dispatch(fetchAsyncShows())
+        dispatch(fetchAsyncMovies(movieText))
+        dispatch(fetchAsyncShows(showText))
     }, [dispatch])
 
     return (
         <div>
-            <div className="banner-img"></div>
             <MovieListing />
         </div>
     )

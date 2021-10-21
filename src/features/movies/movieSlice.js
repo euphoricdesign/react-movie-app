@@ -4,20 +4,18 @@ import APIKey  from '../../common/apis/MovieApiKey';
 
 export const fetchAsyncMovies = createAsyncThunk(
     'movies/fetchAsyncMovies', 
-    async () => {
-        const movieText = "Harry";
+    async (term) => {
         const response = await movieApi
-        .get(`?apiKey=${APIKey}&s=${movieText}&type=movie`)
+        .get(`?apiKey=${APIKey}&s=${term}&type=movie`)
         return response.data
     }
 )
 
 export const fetchAsyncShows = createAsyncThunk(
     'movies/fetchAsyncShows', 
-    async () => {
-        const seriesText = "Friends";
+    async (term) => {
         const response = await movieApi
-        .get(`?apiKey=${APIKey}&s=${seriesText}&type=series`)
+        .get(`?apiKey=${APIKey}&s=${term}&type=series`)
         return response.data
     }
 )
@@ -46,27 +44,18 @@ const movieSlice = createSlice({
         }
     },
     extraReducers: {
-        [fetchAsyncMovies.pending]: state => {
-            console.log("Pending")
-        },
         [fetchAsyncMovies.fulfilled]: (state, action) => {
-            console.log("Fetched Successfully!")
             return { ...state, movies: action.payload }
         },
-        [fetchAsyncMovies.rejected]: () => {
-            console.log("Rejected")
-        },
         [fetchAsyncShows.fulfilled]: (state, action) => {
-            console.log("Fetched Successfully!")
             return { ...state, shows: action.payload }
         },
         [fetchAsyncMovieOrShowDetail.fulfilled]: (state, action) => {
-            console.log("Fetched Successfully!")
             return { ...state, selectMovieOrShow: action.payload }
         }
     }
 });
-console.log("movieSlice::::",movieSlice)
+
 export const { removeSelectedMovieOrShow } = movieSlice.actions;
 
 export default movieSlice.reducer;
