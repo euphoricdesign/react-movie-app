@@ -67,4 +67,7 @@
 
 .section-right {
     margin-left: 30px;
+    @media screen and (max-width:768px) {
+        margin: 30px 0px 0px 0px;
+    }
 }
